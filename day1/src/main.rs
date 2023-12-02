@@ -26,17 +26,14 @@ fn sum_it(input: Vec<(Option<u32>, Option<u32>)>) -> u32 {
         .iter()
         .enumerate()
         .map(|(_, c)| {
-            format!("{}{}", c.0.unwrap_or(0), c.1.unwrap_or(0))
-                .trim()
-                .parse::<u32>()
-                .unwrap_or(0)
+            c.0.unwrap_or(0) * 10 + c.1.unwrap_or(0)
         })
         .sum()
 }
 
 fn find_first_and_last<F>(puzzle_input: &[String], extractor: F) -> Vec<(Option<u32>, Option<u32>)>
-where
-    F: Fn(&String) -> Vec<u32>,
+    where
+        F: Fn(&String) -> Vec<u32>,
 {
     puzzle_input
         .iter()
